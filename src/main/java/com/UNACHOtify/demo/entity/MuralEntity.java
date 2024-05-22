@@ -1,5 +1,6 @@
 package com.UNACHOtify.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class MuralEntity {
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
+    @JsonIgnore
     private ArtistaEntity artista;
 
     // Constructores, getters y setters
