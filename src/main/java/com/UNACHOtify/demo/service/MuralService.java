@@ -1,8 +1,8 @@
 package com.UNACHOtify.demo.service;
 
-import com.UNACHOtify.demo.clasesConsultasPersonalizadas.MuralProyeccion;
-import com.UNACHOtify.demo.clasesConsultasPersonalizadas.MuralProyeccionInterface;
+import com.UNACHOtify.demo.projection.MuralDTO;
 import com.UNACHOtify.demo.entity.MuralEntity;
+import com.UNACHOtify.demo.projection.interfacebased.closed.MuralClosedView;
 import com.UNACHOtify.demo.repository.MuralRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +26,15 @@ public class MuralService {
     public List<MuralEntity> obtenerTodosLosMurales() {
         return muralRepository.findAll();
     }
-    public List<Object[]> obtenerMuralesConArtista() {
+    public List<MuralDTO> obtenerMuralesConArtista() {
         return muralRepository.obtenerMuralesConArtistas();
     }
+
+    public List<MuralDTO> muralesPorAño(int startYear, int endYear) {
+        return muralRepository.muralesPorRangoAno(startYear, endYear);
+    }
+
+
 
     public MuralEntity obtenerMuralPorId(int id) {
         return muralRepository.findById(id).orElse(null);
